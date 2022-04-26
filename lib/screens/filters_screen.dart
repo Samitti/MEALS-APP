@@ -4,6 +4,11 @@ import '../widgets/main_drawer.dart';
 class FilteredScreen extends StatefulWidget {
   static const routeName = '/filters';
 
+  final Function saveFilters;
+  final Map<String, bool> currentFilters;
+
+  FilteredScreen(this.currentFilters, this.saveFilters);
+
   @override
   State<FilteredScreen> createState() => _FilteredScreenState();
 }
@@ -14,13 +19,21 @@ class _FilteredScreenState extends State<FilteredScreen> {
   var _vegan = false;
   var _lactoseFree = false;
 
+  @override
+  void initState() {
+    _glutenFree = widget.currentFilters['gluten']!;
+    _lactoseFree = widget.currentFilters['lactose']!;
+    _vegetarian = widget.currentFilters['vegetarian']!;
+    _vegan = widget.currentFilters['vegan']!;
+    super.initState();
+  }
+
   Widget _buildSwitchListTile(
     String title,
     String description,
     bool currentValue,
     Function updateValue,
   ) {
-    print(_glutenFree);
     return SwitchListTile(
       title: Text(title),
       value: currentValue,
@@ -36,7 +49,23 @@ class _FilteredScreenState extends State<FilteredScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Your Filters')),
+        appBar: AppBar(
+          title: Text('Your Filters'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.save),
+              onPressed: () {
+                final selectedFilters = {
+                  'gluten': _glutenFree,
+                  'lactose': _lactoseFree,
+                  'vegan': _vegan,
+                  'vegetarian': _vegetarian,
+                };
+                widget.saveFilters(selectedFilters);
+              },
+            )
+          ],
+        ),
         drawer: MainDrawer(),
         body: Column(
           children: <Widget>[
@@ -63,6 +92,18 @@ class _FilteredScreenState extends State<FilteredScreen> {
                     },
                   ),
                   _buildSwitchListTile(
+                    'Lactose-free',
+                    'Only include lactose-free meals',
+                    _lactoseFree,
+                    (newValue) {
+                      setState(
+                        () {
+                          _lactoseFree = newValue;
+                        },
+                      );
+                    },
+                  ),
+                  _buildSwitchListTile(
                     'Vegetarian',
                     'Only include vegetarian meals',
                     _vegetarian,
@@ -82,18 +123,6 @@ class _FilteredScreenState extends State<FilteredScreen> {
                       setState(
                         () {
                           _vegan = newValue;
-                        },
-                      );
-                    },
-                  ),
-                  _buildSwitchListTile(
-                    'Lactose-free',
-                    'Only include lactose-free meals',
-                    _lactoseFree,
-                    (newValue) {
-                      setState(
-                        () {
-                          _lactoseFree = newValue;
                         },
                       );
                     },
