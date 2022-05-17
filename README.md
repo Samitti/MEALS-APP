@@ -1,16 +1,32 @@
-# meals_app
+# MEALS_APP
 
-A new Flutter project.
+This is a small flutter learning side project. In this app you find a list of meals catagorized and you can navigate to each meal to learn what the ingredients are and the steps how to prepare them. There is also an option where you can save your favorite meals.
 
-## Getting Started
+# Screenshot of Page
 
-This project is a starting point for a Flutter application.
+![screenshot 1](ScreenShots/1.JPG)
+![screenshot 2](ScreenShots/2.JPG)
+![screenshot 3](ScreenShots/3.JPG)
+![screenshot 4](ScreenShots/4.JPG)
 
-A few resources to get you started if this is your first Flutter project:
+# Built With
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Flutter
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Authors
+
+👤 **Samuel Teweldebrhan Ghebremeskel**
+
+- Github: [@githubhandle](https://github.com/Samitti)
+- Twitter: [@twitterhandle](https://twitter.com/Samuel63734232)
+- Linkedin: [linkedin](https://www.linkedin.com/in/samuelghebremeskel/)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Samitti/MEALS-APP/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
